@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace AddressBook
 {
-    internal class CreatContacts
+    internal class Details
     {
-        //Class to fill the details
-        public string firstName;
+        public string firstName; 
         public string lastName;
         public string address;
         public string city;
@@ -18,7 +17,7 @@ namespace AddressBook
         public int zip;
         public long phoneNumber;
 
-        public CreatContacts(string firstName, string lastName, string address, string city, string state, string email, int zip, long phoneNumber)
+        public Details(string firstName, string lastName, string address, string city, string state, string email, int zip, long phoneNumber)
         {
             //set values of class level variables from the constructor
             this.firstName = firstName;
