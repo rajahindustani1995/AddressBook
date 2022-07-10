@@ -12,7 +12,7 @@ namespace AddressBook
                 Console.WriteLine("\n1. Adding contacts details");
                 Console.WriteLine("2. Adding New contacts details");
                 Console.WriteLine("3. Editing Existing contacts details");
-
+                Console.WriteLine("4. Delete added Person Contact using name");
 
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter your choice : ");
@@ -34,7 +34,7 @@ namespace AddressBook
                     case 3:
                         ContactPerson editContact = new ContactPerson();
                         editContact.AddingContactDetails();
-                        //editContact.EditContactDetails();
+                        editContact.DisplayDetails();
 
                         //Asking user if he/she wanted to edit the contact details or not
                         Console.WriteLine("Edit contact details using name ? 1: Yes/ Other: No");
@@ -45,8 +45,29 @@ namespace AddressBook
                             editContact.EditContactDetails();
                             editContact.DisplayDetails();
                         }
-                        break ;
+                        break;
+                    case 4:
+                        ContactPerson deleteContact = new ContactPerson();
+                        deleteContact.AddingContactDetails();
+                        deleteContact.DisplayDetails();
 
+                        //Asking user if he/she wanted to edit the contact details or not
+                        Console.WriteLine("Edit contact details using name ? 1: Yes/ Other: No");
+                        Console.Write("Enter your choice : ");
+                        int choice4 = Convert.ToInt32(Console.ReadLine());
+                        if (choice4 == 1)
+                        {
+                            deleteContact.EditContactDetails();
+                            deleteContact.DisplayDetails();
+                        }
+
+                        //Asking user if he/she wanted to delete the contact details or not
+                        Console.WriteLine("Delete person using person name ? 1. Yes/ Other:  No");
+                        Console.Write("Enter your choice : ");
+                        int choice42 = Convert.ToInt32(Console.ReadLine());
+                        deleteContact.DeleteContactDetails();
+                        //person4.DisplayDetails();
+                        break;
 
                     default:
                         Console.WriteLine("Enter correct choice");
