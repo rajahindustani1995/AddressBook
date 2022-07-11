@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace AddressBook
 {
-    public class ContactPerson
+    public class MultipleContacts
     {
         //Declaring list to add multiple data type information
-        List<Details> detailsList;
+        public List<Details> detailsList;
 
-        public ContactPerson()
+        public MultipleContacts()
         {
             detailsList = new List<Details>();
         }
 
         public void AddingContactDetails()
         {
+        AddContactDetails:
             //Filling the contact details
             Console.WriteLine("Add details one by one");
             Console.Write("Enter First Name : ");
@@ -38,37 +39,59 @@ namespace AddressBook
             string email = Console.ReadLine();
 
             //Passing values to the details object
-            Details addNewContact = new Details(firstName, lastName, address, city, state, email, zip, phoneNumber);
+            Details details = new Details(firstName, lastName, address, city, state, email, zip, phoneNumber);
 
             //Checking if entered details already present or not
-            if (detailsList.Contains(addNewContact))
+            int flag = 0;
+            if (detailsList.Count > 0)
             {
-                Console.WriteLine("These details already present in Address book");
+                foreach (Details d in detailsList)
+                {
+                    if (d.firstName == firstName)
+                    {
+                        //Setting flag to 1 if same firstName is present
+                        flag = 1;
+                        Console.WriteLine("First Name : " + d.firstName);
+                    }
+                }
+            }
+            if (flag == 1)
+            {
+                Console.WriteLine("Same first name already present in Address book");
             }
 
             //If not add it to the list
             else
             {
-                detailsList.Add(addNewContact);
+                detailsList.Add(details);
             }
         }
 
         //Displaying the details
         public void DisplayDetails()
         {
-            foreach (Details d in detailsList)
+            //Checking if detailsList List contains something or not
+            if (detailsList.Count > 0)
             {
-                Console.WriteLine("\nContact details are as shown below");
-                Console.WriteLine("First Name : " + d.firstName);
-                Console.WriteLine("Last Name : " + d.lastName);
-                Console.WriteLine("Address : " + d.address);
-                Console.WriteLine("City : " + d.city);
-                Console.WriteLine("State : " + d.state);
-                Console.WriteLine("Zip code : " + d.zip);
-                Console.WriteLine("Phone number : " + d.phoneNumber);
-                Console.WriteLine("Email id : " + d.email);
+                foreach (Details d in detailsList)
+                {
+                    Console.WriteLine("\nContact details are as shown below");
+                    Console.WriteLine("First Name : " + d.firstName);
+                    Console.WriteLine("Last Name : " + d.lastName);
+                    Console.WriteLine("Address : " + d.address);
+                    Console.WriteLine("City : " + d.city);
+                    Console.WriteLine("State : " + d.state);
+                    Console.WriteLine("Zip code : " + d.zip);
+                    Console.WriteLine("Phone number : " + d.phoneNumber);
+                    Console.WriteLine("Email id : " + d.email);
+                }
             }
 
+            //If List is empty then there is nothing to show
+            else
+            {
+                Console.WriteLine("No contact details available to display");
+            }
         }
 
         //Editing in existing contact details
@@ -146,7 +169,6 @@ namespace AddressBook
                 }
             }
         }
-
 
         //For deleting person details
         public void DeleteContactDetails()

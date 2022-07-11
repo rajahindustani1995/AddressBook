@@ -13,6 +13,7 @@ namespace AddressBook
                 Console.WriteLine("2. Adding New contacts details");
                 Console.WriteLine("3. Editing Existing contacts details");
                 Console.WriteLine("4. Delete added Person Contact using name");
+                Console.WriteLine("5. Add multiple persons contacts");
 
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter your choice : ");
@@ -67,6 +68,57 @@ namespace AddressBook
                         int choice42 = Convert.ToInt32(Console.ReadLine());
                         deleteContact.DeleteContactDetails();
                         //person4.DisplayDetails();
+                        break;
+                    case 5:
+                        MultipleContacts multiple = new MultipleContacts();
+                    Add:
+                        Console.WriteLine("You want to enter details ? 1: Yes/ Other: No");
+                        Console.Write("Enter your choice : ");
+                        int c = Convert.ToInt32(Console.ReadLine());
+                        if (c == 1)
+                        {
+                            multiple.AddingContactDetails();
+                            multiple.DisplayDetails();
+                            goto Add;
+                        }
+
+                    //Asking user if he/she wanted to edit the contact details or not
+                    Edit:
+                        if (multiple.detailsList.Count > 0)
+                        {
+                            Console.WriteLine("Edit contact details using name ? 1: Yes/ OtherNumber: No");
+                            Console.Write("Enter your choice : ");
+                            int choice5 = Convert.ToInt32(Console.ReadLine());
+                            if (choice5 == 1)
+                            {
+                                multiple.EditContactDetails();
+                                multiple.DisplayDetails();
+                                goto Edit;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("No contact details available to edit");
+                        }
+
+                    //Asking user if he/she wanted to delete the contact details or not
+                    Delete:
+                        if (multiple.detailsList.Count > 0)
+                        {
+                            Console.WriteLine("Delete person using person name ? 1. Yes/ OtherNumber:  No");
+                            Console.Write("Enter your choice : ");
+                            int choice52 = Convert.ToInt32(Console.ReadLine());
+                            if (choice52 == 1)
+                            {
+                                multiple.DeleteContactDetails();
+                                multiple.DisplayDetails();
+                                goto Delete;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("No contact details available for deletion");
+                        }
                         break;
 
                     default:
