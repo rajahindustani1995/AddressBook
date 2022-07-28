@@ -121,6 +121,7 @@ namespace AddressBook
                             Console.WriteLine("No contact details available for deletion");
                         }
                         break;
+
                     case 6:
                         Console.Write("How many Address Books do you need : ");
                         int need = Convert.ToInt32(Console.ReadLine());
@@ -176,19 +177,45 @@ namespace AddressBook
                         {
                             Console.WriteLine("No contact details available for deletion");
                         }
-                        Console.WriteLine("Want to choose Address Book again ? ( Press 1 for Yes / OtherNumber for No) : ");
+                    //Asking user to search by city or state
+                    Search:
+                        Console.Write("Want to search by city or state ? ( Press 1 for city / 2 for state /  OtherNumber for No) : ");
+                        int searchBy = Convert.ToInt32(Console.ReadLine());
+                        if (searchBy == 1)
+                        {
+                            addressBook.SearchPersonByCity();
+                            Console.Write("Want to search person by city or state again (Press 1 for yes) : ");
+                            int searchAgain = Convert.ToInt32(Console.ReadLine());
+                            if (searchAgain == 1)
+                            {
+                                goto Search;
+                            }
+                        }
+                        if (searchBy == 2)
+                        {
+                            addressBook.SearchPersonByState();
+                            Console.Write("Want ro search person by city or state again (Press 1 for yes) : ");
+                            int searchAgain = Convert.ToInt32(Console.ReadLine());
+                            if (searchAgain == 1)
+                            {
+                                goto Search;
+                            }
+                        }
+                        Console.Write("Want to choose Address Book again ? ( Press 1 for Yes / OtherNumber for No) : ");
                         int start = Convert.ToInt32(Console.ReadLine());
                         if (start == 1)
                         {
                             goto GoAgain;
                         }
                         break;
+                    
+
 
                     default:
                         Console.WriteLine("Enter correct choice");
                         break;
                 }
             } while (choice != 0);
-        }
+        } 
     }
 }

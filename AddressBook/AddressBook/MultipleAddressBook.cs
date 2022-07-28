@@ -290,5 +290,44 @@ namespace AddressBook
                 }
             }
         }
+
+        //To search person by city name
+        public void SearchPersonByCity()
+        {
+            Console.Write("Enter the city to search : ");
+            string cityName = Console.ReadLine();
+            foreach (KeyValuePair<string, int> keyValuePair in AddrBook)
+            {
+                int count = 0;
+                foreach (Details details in detailsList[count])
+                {
+                    if (details.city == cityName)
+                    {
+                        Console.WriteLine("Person " + details.firstName + " from city : " + details.city + " is present in Address book : " + keyValuePair.Key);
+                    }
+                    count++;
+                }
+            }
+        }
+
+        //To search person by state name
+        public void SearchPersonByState()
+        {
+            Console.Write("Enter the state to search : ");
+            string stateName = Console.ReadLine();
+            foreach (KeyValuePair<string, int> keyValuePair in AddrBook)
+            {
+                int count = 0;
+                foreach (Details details in detailsList[count])
+                {
+                    if (details.state == stateName)
+                    {
+                        Console.WriteLine("Person " + details.firstName + " from state : " + details.state + " is present in Address book : " + keyValuePair.Key);
+                        break;
+                    }
+                    count++;
+                }
+            }
+        }
     }
 }

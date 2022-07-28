@@ -40,7 +40,7 @@ namespace AddressBook
             //Passing values to the details object
             Details addNewContact = new Details(firstName, lastName, address, city, state, email, zip, phoneNumber);
 
-            //Checking if entered details already present or not
+            //UC7 - Checking if entered details already present or not
             if (detailsList.Contains(addNewContact))
             {
                 Console.WriteLine("These details already present in Address book");

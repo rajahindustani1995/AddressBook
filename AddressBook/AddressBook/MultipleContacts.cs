@@ -9,7 +9,7 @@ namespace AddressBook
     public class MultipleContacts
     {
         //Declaring list to add multiple data type information
-        public List<Details> detailsList;
+        public List<Details> detailsList; 
 
         public MultipleContacts()
         {
